@@ -1,17 +1,13 @@
-var React = require('react')
-var ReactDOM = require('react-dom')
-var MyTitle = require('./MyTitle')
+const React = require('react')
+const ReactDOM = require('react-dom')
+const {Router, Route, hashHistory} = require('react-router')
 
-var div = React.DOM.div
+const Landing = require('./Landing')
 
-var MyTitleFact = React.createFactory(MyTitle)
-var ce = React.createElement
-
-var MyFirstComponent = (
-  div(null,
-    MyTitleFact({title: 'Props are great', color: 'red'}),
-    ce(MyTitle, {title: 'Props are best', color: 'blue'}),
-    React.createElement(MyTitle, {title: 'My name is Yashika', color: 'peru'})
-  )
+const ClientApp = () => (
+  <Router history={hashHistory}>
+    <Route path='/' component={Landing} />
+  </Router>
 )
-ReactDOM.render(MyFirstComponent, document.getElementById('app'))
+
+ReactDOM.render(<ClientApp />, document.getElementById('app'))
