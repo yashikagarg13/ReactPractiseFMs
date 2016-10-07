@@ -1,11 +1,15 @@
 const React = require('react')
 const Data = require('../public/data')
 
+const ShowCard = require('./ShowCard')
+
 const Search = () => (
   <div className='container'>
-    {Data.shows.map(show => (
-      <h3>{show.title}</h3>
-    ))}
+    <div className="shows">
+      {Data.shows.map(show => (
+        <ShowCard {...show} key={show.imdbID} />
+      ))}
+    </div>
   </div>
 )
 
