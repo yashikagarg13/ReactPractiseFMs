@@ -3,8 +3,14 @@ const Data = require('../public/data')
 
 const ShowCard = require('./ShowCard')
 
-// class Search extends React.Component {
-// The above method doesn't have autobinding
+/* class Search extends React.Component { // The above method doesn't have autobinding
+  constructor (props) {
+    super(props)
+
+    this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
+  }
+} */
+
 const Search = React.createClass({
   getInitialState () {
     return {
@@ -33,6 +39,5 @@ const Search = React.createClass({
     )
   }
 })
-// }
 
 module.exports = Search
