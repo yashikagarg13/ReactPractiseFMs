@@ -18,4 +18,17 @@ describe('<Search />', () => {
 		const wrapper = shallow(<Search />)
 		expect(wrapper.find(ShowCard).length).to.equal(shows.length)
 	})
+
+	it('should filter correctlygiven new state', () => {
+		const wrapper = mount(<Search />)
+		const input = wrapper.find('.search-input')
+
+		// shallow doesn't allow interaction. here we have to simulate the change of input
+		// use shallow as much as you can and mount only when you have to
+		input.node.value = 'house'
+		input.simulate('change')
+
+		expect(wrapper.state('searchTerm')).to.equal('house')
+		expect(wrapper.find('.show-card').length).to.equal(2)
+	})
 })
