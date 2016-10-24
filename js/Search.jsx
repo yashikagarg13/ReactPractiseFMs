@@ -1,6 +1,5 @@
 const React = require('react')
-const Data = require('../public/data')
-
+const {object} = React.PropTypes
 const ShowCard = require('./ShowCard')
 
 /* class Search extends React.Component { // The above method doesn't have autobinding
@@ -17,6 +16,9 @@ const Search = React.createClass({
       searchTerm: ''
     }
   },
+  propTypes: {
+    route: object
+  },
   handleSearchTermEvent (event) {
     this.setState({
       searchTerm: event.target.value
@@ -31,7 +33,7 @@ const Search = React.createClass({
             value={this.state.searchTerm} onChange={this.handleSearchTermEvent} />
         </header>
         <div className="shows">
-          {Data.shows
+          {this.props.route.shows
             .filter(show => `${show.title} ${show.description}`.toUpperCase()
                 .indexOf(this.state.searchTerm.toUpperCase()) >= 0)
             .map(show => (
