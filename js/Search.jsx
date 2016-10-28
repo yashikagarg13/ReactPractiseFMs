@@ -1,6 +1,7 @@
 const React = require('react')
 const {object} = React.PropTypes
 const ShowCard = require('./ShowCard')
+const Header = require('./Header')
 
 /* class Search extends React.Component { // The above method doesn't have autobinding
   constructor (props) {
@@ -19,19 +20,16 @@ const Search = React.createClass({
   propTypes: {
     route: object
   },
-  handleSearchTermEvent (event) {
-    this.setState({
-      searchTerm: event.target.value
-    })
+  handleSearchTermChange (searchTerm) {
+    this.setState({searchTerm})
   },
   render () {
     return (
       <div className='container'>
-        <header className='header'>
-          <h1 className='brand'>svideo</h1>
-          <input className='search-input' placeholder='Search' type='text'
-            value={this.state.searchTerm} onChange={this.handleSearchTermEvent} />
-        </header>
+        <Header
+          searchTerm={this.state.searchTerm}
+          handleSearchTermChange={this.handleSearchTermChange}
+          showSearch />
         <div className="shows">
           {this.props.route.shows
             .filter(show => `${show.title} ${show.description}`.toUpperCase()

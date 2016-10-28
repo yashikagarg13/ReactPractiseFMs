@@ -1,15 +1,15 @@
 const React = require('react')
 const {object} = React.PropTypes
 
+const Header = require('./Header')
+
 class Details extends React.Component {
   render () {
     const {title, description, year, poster, trailer} = this.props.params || {}
 
     return (
       <div className='container'>
-        <header className='header'>
-          <h1 className='brand'>svideo</h1>
-        </header>
+        <Header />
         <div className='video-info'>
           <h1 className='video-title'>{title}</h1>
           <h2 className='video-year'>({year})</h2>
