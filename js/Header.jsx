@@ -3,6 +3,12 @@ const {Link} = require('react-router')
 const {bool, string, func} = React.PropTypes
 
 class Header extends React.Component {
+  constructor (props) {
+    super(props)
+    
+    this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
+  }
+
   handleSearchTermEvent (event) {
     this.props.handleSearchTermChange(event.target.value)
   }
@@ -11,7 +17,7 @@ class Header extends React.Component {
     let utilSpace
     if (this.props.showSearch) {
       utilSpace = <input className='search-input' placeholder='Search' type='text'
-        value={this.props.searchTerm} onChange={this.handleSearchTermEvent.bind(this)} />
+        value={this.props.searchTerm} onChange={this.handleSearchTermEvent} />
     } else {
       utilSpace = (
         <h2 className='header-back'>
