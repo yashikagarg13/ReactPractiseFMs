@@ -1,16 +1,11 @@
 const React = require('react')
 const {Link} = require('react-router')
 const {bool, string, func} = React.PropTypes
+const {connector} = require('./Store')
 
 class Header extends React.Component {
-  constructor (props) {
-    super(props)
-    
-    this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
-  }
-
   handleSearchTermEvent (event) {
-    this.props.handleSearchTermChange(event.target.value)
+    this.props.setSearchTerm(event.target.value)
   }
 
   render () {
@@ -40,7 +35,7 @@ class Header extends React.Component {
 Header.propTypes = {
   showSearch: bool,
   searchTerm: string,
-  handleSearchTermChange: func
+  setSearchTerm: func
 }
 
-module.exports = Header
+module.exports = connector(Header)
