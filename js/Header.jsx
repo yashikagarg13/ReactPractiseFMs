@@ -4,6 +4,12 @@ const {bool, string, func} = React.PropTypes
 const {connector} = require('./Store')
 
 class Header extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
+  }
+
   handleSearchTermEvent (event) {
     this.props.setSearchTerm(event.target.value)
   }
