@@ -21,7 +21,15 @@ const reduceSearchTerm = (state, action) => {
   return newState
 }
 
-const store = redux.createStore(rootReducer)
+// below code is sufficient for production code
+// const store = redux.createStore(rootReducer)
+
+// required to connect with redux devtools
+// this is hook to use redux dev tools
+const store = redux.createStore(rootReducer, initialState, redux.compose(
+  typeof window === 'object' && typeof window.devToolsExtension !== 'undefined'
+    ? window.devToolsExtension() : (f) => f
+))
 
 // We can do this in respective components as well
 // takes state
