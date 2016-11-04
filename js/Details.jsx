@@ -1,11 +1,16 @@
 const React = require('react')
-const {object} = React.PropTypes
+const {arrayOf, object} = React.PropTypes
+const {connector} = require('./Store')
 
 const Header = require('./Header')
 
 class Details extends React.Component {
+  assignShow (id) {
+    const showArray = this.props.shows.filter(show => show.imdbID === id)
+    return showArray[0]
+  }
   render () {
-    const {title, description, year, poster, trailer} = this.props.params || {}
+    const {title, description, year, poster, trailer} = this.assignShow[this.props.params.id] || {}
 
     return (
       <div className='container'>
@@ -26,7 +31,8 @@ class Details extends React.Component {
 }
 
 Details.propTypes = {
+  shows: arrayOf(object).isRequired,
   params: object.isRequired
 }
 
-module.exports = Details
+module.exports = connector(Details)

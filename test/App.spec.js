@@ -14,6 +14,7 @@ const {Provider} = require('react-redux')
 describe('<Search />', () => {
 	it("should render the Header", () => {
 		const wrapper = shallow(<Provider><Search /></Provider>)
+		console.log(wrapper.find(Header));	
 		expect(wrapper.find(Header).length).to.equal(1);	
 		console.log(wrapper.find(Header));	
 	})

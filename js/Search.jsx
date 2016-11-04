@@ -1,5 +1,5 @@
 const React = require('react')
-const {object, string} = React.PropTypes
+const {object, string, arrayOf} = React.PropTypes
 const ShowCard = require('./ShowCard')
 const Header = require('./Header')
 const {connector} = require('./Store')
@@ -16,7 +16,7 @@ const Search = (props) => (
   <div className='container'>
     <Header showSearch />
     <div className="shows">
-      {props.route.shows
+      {props.shows
         .filter(show => `${show.title} ${show.description}`.toUpperCase()
             .indexOf(props.searchTerm.toUpperCase()) >= 0)
         .map(show => (
@@ -28,7 +28,8 @@ const Search = (props) => (
 
 Search.propTypes = {
   route: object,
-  searchTerm: string
+  searchTerm: string,
+  shows: arrayOf(object)
 }
 
 module.exports = connector(Search)
