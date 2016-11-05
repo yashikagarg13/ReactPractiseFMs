@@ -6,6 +6,8 @@ module.exports = {
   output: {
     path: Path.join(__dirname, "/public"),
     filename: "bundle.js",
+    // where to put all chunks
+    publicPath: '/public/' // where we are serving are static files from
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.json'],
@@ -13,7 +15,7 @@ module.exports = {
   stats: {
     colors: true,
     reasons: true,
-    chunks: false,
+    chunks: true,
   },
   module: {
     preLoaders: [
