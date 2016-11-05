@@ -10,7 +10,7 @@ class Details extends React.Component {
     return showArray[0]
   }
   render () {
-    const {title, description, year, poster, trailer} = this.assignShow[this.props.params.id] || {}
+    const {title, description, year, poster, trailer} = this.assignShow(this.props.params.id) || {}
 
     return (
       <div className='container'>
@@ -18,7 +18,7 @@ class Details extends React.Component {
         <div className='video-info'>
           <h1 className='video-title'>{title}</h1>
           <h2 className='video-year'>({year})</h2>
-          <img className='video-poster' src={`public/img/posters/${poster}`} />
+          <img className='video-poster' src={`/public/img/posters/${poster}`} />
           <p className='video-description'>{description}</p>
         </div>
         <div className='video-container'>
