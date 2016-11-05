@@ -1,5 +1,4 @@
 const React = require('react')
-const ReactDOM = require('react-dom')
 const {Provider} = require('react-redux')
 
 const {store} = require('./Store')
@@ -10,7 +9,7 @@ const Landing = require('./Landing')
 const Search = require('./Search')
 const Details = require('./Details')
 
-const ClientApp = React.createClass({
+const App = React.createClass({
   render () {
     return (
       <Provider store={store}>
@@ -26,4 +25,4 @@ const ClientApp = React.createClass({
   }
 })
 
-ReactDOM.render(<ClientApp />, document.getElementById('app'))
+module.exports = App
